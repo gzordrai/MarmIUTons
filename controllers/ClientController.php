@@ -9,11 +9,11 @@ Connexion::connect();
 
 class ClientController {
     public static function home() {
-        return require("./view/home.php");
+        return require("./views/home.php");
     }
 
     public static function createClient() {
-        return require("./view/register.php");
+        return require("./views/register.php");
     }
 
     public static function createdClient() {
@@ -28,7 +28,7 @@ class ClientController {
     }
 
     public static function connectClient() {
-        return require("./view/connect.php");
+        return require("./views/connect.php");
     }
 
     public static function connectedClient() {
