@@ -1,0 +1,114 @@
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+/******************/
+
+.left_bloc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 30%;
+    position: absolute;
+    background-image: url(../images/logo/bandeau.png);
+}
+
+.left_bloc img {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 20vh;
+}
+
+/**********************/
+
+.connect_bloc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+.connect_bloc {
+    margin-left: 45%;
+    margin-right: 15%; 
+}
+
+.header h1 {
+    font-size: 35px;
+    color: var(--light);
+}
+
+.input_bloc {
+    display: flex;
+    flex-direction: column;
+}
+
+.content input {
+    width: 100%;
+    background-color: var(--light);
+    color: var(--txtDark);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: hidden;
+}
+
+/**marche pas*/
+.content input:invalid {
+    border: var(--warm);
+}
+
+.help_div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.help_div a {
+    color: var(--light);
+}
+
+.submit_div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submit_div button {
+    border-radius: 50px;
+    background-color: var(--warm);
+    color: var(--txtDark);
+    width: 30px;
+    height: 30px;
+    border: hidden;
+    transition: 0.2s ease-in-out;
+}
+
+.submit_div button:hover {
+    background-color: var(--coolDark);
+    color: var(--light);
+    transition: 0.2s ease-in-out;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.row .pass_div {
+    width: 50%;
+}
+
+.confirm_div {
+    margin-left: 40px;
+}
+
+.mail_div, .pass_div {
+    display: flex;
+}
+
+.pseudo_div {
+    display: flex;
+}

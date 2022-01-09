@@ -1,0 +1,51 @@
+:root {
+    --background: #23272A;
+    --warm: #FFA17A;
+    --cool: #00706c;
+    --coolDark: #00AAA3;
+    --light: #E5FFFC;
+    /*--light: rgba(229, 255, 252, 0.388);*/
+    --txtLight: #E5FFFC;
+    --txtDark: #1c2b35;
+
+
+    --orange: #ffa17a;
+    /*--brown: #55433b;*/
+    --brown: #281528;
+    --lightbrown: #bba79c;
+    --lightgreen: #88c87e;
+    --green: #53924c;
+
+    --margin-bloc-space: 3rem;
+    --padding-bloc: 10px;
+    }
+
+@font-face {
+    font-family: txt;
+    src: url(../font/Espera-Regular.ttf);
+}
+
+@font-face {
+    font-family: title;
+    src: url(../font/Peas_&_Carrots.ttf);
+}
+
+body {
+    background-color:  var(--brown);
+    margin: 0;
+    font-family: txt;
+}
+
+.main, .content_profile {
+    margin-top: 110vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-bottom: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content_profile {
+    margin-top: 10vh !important;
+}

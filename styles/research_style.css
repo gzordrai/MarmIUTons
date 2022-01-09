@@ -1,0 +1,20 @@
+.research {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: brown;
+}
+
+.search {
+    margin-top: 20px;
+}
+
+.search select {
+    width: 100%
+}
+
+.btn_search {
+    width: 100%;
+}
