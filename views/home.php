@@ -4,12 +4,12 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./style/navbar_style.css">
-        <link rel="stylesheet" href="./style/style.css">
-        <link rel="stylesheet" href="./style/title_style.css">
-        <link rel="stylesheet" href="./style/research_style.css">
-        <link rel="stylesheet" href="./style/book_style.css">
-        <link rel="stylesheet" href="./style/add_recipe_style.css">
+        <link rel="stylesheet" href="./styles/navbar_style.css">
+        <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/title_style.css">
+        <link rel="stylesheet" href="./styles/research_style.css">
+        <link rel="stylesheet" href="./styles/book_style.css">
+        <link rel="stylesheet" href="./styles/add_recipe_style.css">
         <script type="application/javascript" src="./scripts/home.js"></script>
         <script type="application/javascript" src="https://kit.fontawesome.com/95f48b9c6d.js" crossorigin="anonymous"></script>
 
