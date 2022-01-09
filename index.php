@@ -1,6 +1,6 @@
 <?php
 require_once("./conf/Connexion.php");
-require_once("./controller/ClientController.php");
+require_once("./controllers/ClientController.php");
 
 if(session_status() == 1) {
     session_start();
