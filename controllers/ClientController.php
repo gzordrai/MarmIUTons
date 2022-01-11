@@ -21,7 +21,7 @@ class ClientController {
         $pseudo = $_GET["pseudo"];
         $pwd = $_GET["pwd"];
 
-        if(!Client::isRegister($email, $pseudo, $pwd))
+        if(!Client::isRegister($email, $pwd))
             Client::add($email, $pseudo, $pwd);
         else
             return header("Location: index.php?action=connectClient");

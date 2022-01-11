@@ -18,17 +18,15 @@ class Client {
     /**
      * Check if the client is already register
      * @param string $email Client email
-     * @param string $pseudo Client pseudo
      * @param string $pwd Client password
      * @return boolean Return if the client is register
      */
-    public static function isRegister($email, $pseudo, $pwd) {
-        $request = "SELECT COUNT(email) FROM client WHERE email = :email AND pseudo = :pseudo AND password = :pwd";
+    public static function isRegister($email, $pwd) {
+        $request = "SELECT COUNT(email) FROM client WHERE email = :email AND password = :pwd";
         $preparedRequest = Connexion::pdo()->prepare($request);
         $values = array(
             "email" => $email,
-            "pseudo" => $pseudo,
-            "pwd" => $pwd,
+            "pwd" => $pwd
         );
 
         try {
