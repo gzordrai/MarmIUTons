@@ -16,19 +16,19 @@ class Client {
     }
 
     /**
-     * add a client to the database
-     * @param string $email
-     * @param string $pseudo
-     * @param string $pwd
+     * Add a client to the database
+     * @param string $email Client email
+     * @param string $pseudo Client pseudo
+     * @param string $pwd Client password
      * @return void
      */
     public static function add($email, $pseudo, $pwd) {
-        $request = "INSERT INTO client VALUES(:email, :pseudo, :pwd);";
+        $request = "INSERT INTO client(email, pseudo, password) VALUES(:email, :pseudo, :pwd);";
         $preparedRequest = Connexion::pdo()->prepare($request);
         $values = array(
             "email" => $email,
             "pseudo" => $pseudo,
-            "pwd" => $pwd
+            "pwd" => $pwd,
         );
 
         try {

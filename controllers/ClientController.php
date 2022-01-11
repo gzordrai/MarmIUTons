@@ -5,7 +5,7 @@
  *    - fonction de recherche
 */
 require_once("./conf/Connexion.php");
-Connexion::connect();
+require_once("./models/Client.php");
 
 class ClientController {
     public static function home() {
@@ -21,7 +21,7 @@ class ClientController {
         $pseudo = $_GET["pseudo"];
         $pwd = $_GET["pwd"];
 
-        //$client = new Client($email, $pseudo, $pwd);
+        Client::add($email, $pseudo, $pwd);
 
         $_SESSION["email"] = $email;
         return header("Location: index.php");
