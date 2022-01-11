@@ -16,6 +16,32 @@ class Client {
     }
 
     /**
+     * Check if the client is already register
+     * @param string $email Client email
+     * @param string $pseudo Client pseudo
+     * @param string $pwd Client password
+     * @return boolean Return if the client is register
+     */
+    public static function isRegister($email, $pseudo, $pwd) {
+        $request = "SELECT COUNT(email) FROM client WHERE email = :email AND pseudo = :pseudo AND password = :pwd";
+        $preparedRequest = Connexion::pdo()->prepare($request);
+        $values = array(
+            "email" => $email,
+            "pseudo" => $pseudo,
+            "pwd" => $pwd,
+        );
+
+        try {
+            $bool = $preparedRequest->execute($values);
+            if($bool == 1)
+                return true;
+            return false;
+        } catch(PDOException $err) {
+            echo "Error: " . $err->getMessage() . "<br>";
+        }
+    }
+
+    /**
      * Add a client to the database
      * @param string $email Client email
      * @param string $pseudo Client pseudo

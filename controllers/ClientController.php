@@ -21,7 +21,10 @@ class ClientController {
         $pseudo = $_GET["pseudo"];
         $pwd = $_GET["pwd"];
 
-        Client::add($email, $pseudo, $pwd);
+        if(!Client::isRegister($email, $pseudo, $pwd))
+            Client::add($email, $pseudo, $pwd);
+        else
+            return require("./views/connect.php");
 
         $_SESSION["email"] = $email;
         return header("Location: index.php");
