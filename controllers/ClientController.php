@@ -45,7 +45,8 @@ class ClientController {
 
         $_SESSION["email"] = $email;
         $_SESSION["pseudo"] = Client::getPseudoByEmail($email);
-        echo $_SESSION["pseudo"];
+
+        return header("Location: index.php");
     }
 
     public static function disconnection() {

@@ -31,7 +31,6 @@ class Client {
 
         try {
             $bool = $preparedRequest->execute($values);
-            echo $bool;
             if($bool == 1)
                 return true;
             return false;
@@ -71,7 +70,8 @@ class Client {
         );
 
         try {
-            return $preparedRequest->execute($values);
+            $preparedRequest->execute($values);
+            return $preparedRequest->fetch()["pseudo"];
         } catch(PDOException $err) {
             echo "Error: " . $err->getMessage() . "<br>";
         }
