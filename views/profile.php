@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="../style/profile_style.css">
-  <link rel="stylesheet" type="text/css" href="../style/style.css">
-  <link rel="stylesheet" type="text/css" href="../style/book_style.css">
+  <link rel="stylesheet" href="./styles/profile_style.css">
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./styles/book_style.css">
 
   <script src="https://kit.fontawesome.com/95f48b9c6d.js" crossorigin="anonymous"></script>
   <title>Mon profile</title>
@@ -23,7 +23,7 @@
 
       <div class="profile">
         <img src="./images/logo/cookie.jpg">
-        <p class="name">@Cha</p>
+        <p class="name">@<?php echo $_SESSION["pseudo"] ?></p>
       </div>
     </div>
   </div>
