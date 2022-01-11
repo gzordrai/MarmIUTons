@@ -47,4 +47,8 @@ class ClientController {
     public static function updated() {
         
     }
+
+    public static function profile() {
+        return require("./views/profile.php");
+    }
 }
