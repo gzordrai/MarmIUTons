@@ -21,12 +21,14 @@ class ClientController {
         $pseudo = $_GET["pseudo"];
         $pwd = $_GET["pwd"];
 
-        if(!Client::isRegister($email, $pwd))
-            Client::add($email, $pseudo, $pwd);
-        else
+        if(Client::isRegister($email, $pwd)) return;
             return header("Location: index.php?action=connectClient");
 
+        Client::add($email, $pseudo, $pwd);
+
         $_SESSION["email"] = $email;
+        $_SESSION["pseudo"] = $pseudo;
+
         return header("Location: index.php");
     }
 
@@ -35,7 +37,15 @@ class ClientController {
     }
 
     public static function connectedClient() {
+        $email = $_GET["email"];
+        $pwd = $_GET["pwd"];
 
+        if(!Client::isRegister($email, $pwd))
+            return header("Location: index.php?action=connectClient");
+
+        $_SESSION["email"] = $email;
+        $_SESSION["pseudo"] = Client::getPseudoByEmail($email);
+        echo $_SESSION["pseudo"];
     }
 
     public static function disconnection() {

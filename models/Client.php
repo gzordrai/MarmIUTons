@@ -31,6 +31,7 @@ class Client {
 
         try {
             $bool = $preparedRequest->execute($values);
+            echo $bool;
             if($bool == 1)
                 return true;
             return false;
@@ -57,6 +58,20 @@ class Client {
 
         try {
             $preparedRequest->execute($values);
+        } catch(PDOException $err) {
+            echo "Error: " . $err->getMessage() . "<br>";
+        }
+    }
+
+    public static function getPseudoByEmail($email) {
+        $request = "SELECT pseudo FROM client WHERE email = :email";
+        $preparedRequest = Connexion::pdo()->prepare($request);
+        $values = array(
+            "email" => $email
+        );
+
+        try {
+            return $preparedRequest->execute($values);
         } catch(PDOException $err) {
             echo "Error: " . $err->getMessage() . "<br>";
         }
