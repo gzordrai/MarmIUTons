@@ -24,7 +24,7 @@ class ClientController {
         if(!Client::isRegister($email, $pseudo, $pwd))
             Client::add($email, $pseudo, $pwd);
         else
-            return require("./views/connect.php");
+            return header("Location: index.php?action=connectClient");
 
         $_SESSION["email"] = $email;
         return header("Location: index.php");
