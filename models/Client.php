@@ -62,6 +62,11 @@ class Client {
         }
     }
 
+    /**
+     * Get the client pseudo by client email
+     * @param string $email Client email
+     * @return string Return the client pseudo
+     */
     public static function getPseudoByEmail($email) {
         $request = "SELECT pseudo FROM client WHERE email = :email";
         $preparedRequest = Connexion::pdo()->prepare($request);
