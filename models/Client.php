@@ -3,18 +3,6 @@ require_once("./conf/Connexion.php");
 Connexion::connect();
 
 class Client {
-    private $id;
-    private $email;
-    private $pseudo;
-    private $pwd;
-    private $inscriptionDate;
-
-    public function __construct($email, $pseudo, $pwd) {
-        $this->email = $email;
-        $this->pseudo =$pseudo;
-        $this->pwd = $pwd;
-    }
-
     /**
      * Check if the client is already register
      * @param string $email Client email
@@ -22,17 +10,21 @@ class Client {
      * @return boolean Return if the client is register
      */
     public static function isRegister($email, $pwd) {
-        $request = "SELECT COUNT(email) FROM client WHERE email = :email AND password = :pwd";
+        $request = "SELECT password FROM client WHERE email = :email";
         $preparedRequest = Connexion::pdo()->prepare($request);
         $values = array(
-            "email" => $email,
-            "pwd" => $pwd
+            "email" => $email
         );
 
         try {
-            $bool = $preparedRequest->execute($values);
-            if($bool == 1)
-                return true;
+            $preparedRequest->execute($values);
+            $results = $preparedRequest->fetch();
+
+            if(isset($results[0])) {
+                if(password_verify($pwd, $results[0]))
+                    return true;
+            }
+            
             return false;
         } catch(PDOException $err) {
             echo "Error: " . $err->getMessage() . "<br>";
@@ -80,18 +72,6 @@ class Client {
         } catch(PDOException $err) {
             echo "Error: " . $err->getMessage() . "<br>";
         }
-    }
-
-    public function getEmail() {
-        return $this->email;
-    }
-
-    public function getPseudo() {
-        return $this->pseudo;
-    }
-
-    public function getInscriptionDate() {
-        return $this->inscriptionDate;
     }
 }
 ?>
