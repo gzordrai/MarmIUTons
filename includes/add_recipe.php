@@ -1,19 +1,23 @@
+<?php
+  // include
+?>
+
 <div class="add_rec">
-  <form action="" method="post">
+  <form action="index.php?action=create_recipe" method="post" enctype="multipart/form-data">
 
     <div class="form">
 
       <div class="form_p1">
 
         <div class="title item">
-          <input type="text" placeholder="Titre de la recette...">
+          <input type="text" placeholder="Titre de la recette..." name="rec_name">
         </div>
 
         <div class="img item">
           <div class="center">
             <div class="form-input">
               <label for="file-ip-1">Illustrer la recette</label>
-              <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
+              <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" name="image">
               <div class="preview">
                 <img id="file-ip-1-preview">
               </div>
@@ -26,11 +30,11 @@
             <p>Coût de la recette :</p>
             <div class="container_cost">
               <div class="euroWidget">
-                <input type="radio" name="cost" id="cost-3">
+                <input type="radio" name="cost" id="cost-3" value="3">
                 <label for="cost-3" class="fas fa-euro-sign"></label>
-                <input type="radio" name="cost" id="cost-2">
+                <input type="radio" name="cost" id="cost-2"value="2">
                 <label for="cost-2" class="fas fa-euro-sign"></label>
-                <input type="radio" name="cost" id="cost-1">
+                <input type="radio" name="cost" id="cost-1"value="1">
                 <label for="cost-1" class="fas fa-euro-sign"></label>
               </div>
             </div>
@@ -38,7 +42,7 @@
 
           <div class="quentity">
             <p>Pour combien de personnes ?</p>
-            <input type="number" id="tentacles" name="tentacles" min="1" max="20">
+            <input type="number" id="num" name="num_people" min="1" max="20">
           </div>
         </div>
 
@@ -46,19 +50,19 @@
           <div class="season">
             <p>A quelle saison faire cette recette ?</p>
             <div>
-              <input type="radio" id="huey" name="season" value="huey" checked>
+              <input type="radio" id="huey" name="season" value="Printemps" checked>
               <label for="huey">Printemps</label>
             </div>
             <div>
-              <input type="radio" id="dewey" name="season" value="dewey">
+              <input type="radio" id="dewey" name="season" value="Eté">
               <label for="dewey">Eté</label>
             </div>
             <div>
-              <input type="radio" id="dewey" name="season" value="dewey">
+              <input type="radio" id="dewey" name="season" value="Automne">
               <label for="dewey">Automne</label>
             </div>
             <div>
-              <input type="radio" id="dewey" name="season" value="dewey">
+              <input type="radio" id="dewey" name="season" value="Hiver">
               <label for="dewey">Hiver</label>
             </div>
           </div>
@@ -82,9 +86,6 @@
           </div>
         </div>
 
-
-
-
       </div>
 
       <div class="form_p2">
@@ -93,7 +94,7 @@
           <div class="tools" id="tools">
             <div id="champs_tool">
               <p>Le matériel nécessaire :</p>
-              <input class="item" type="text" placeholder="Mixeur...">
+              <input class="item" type="text" placeholder="Mixeur..." name="tool1">
             </div>
             <input type="button" value="+" id="add_tool">
           </div>
@@ -102,8 +103,8 @@
             <div id="champs_ingrs">
               <p>Les ingrédients et leur quantité :</p>
               <div class="item">
-                <input type="text" placeholder="Sucre...">
-                <input class="quentity" type="text" placeholder="32g...">
+                <input type="text" placeholder="Sucre..." name="ingr1">
+                <input class="quentity" type="text" placeholder="32g..." name="quen1">
               </div>
 
             </div>
@@ -113,7 +114,7 @@
         </div>
         <div class="steps item" id="steps">
           <div id="champs_steps">
-            <input class="item step" type="text" placeholder="Etape...">
+            <input class="item step" type="text" placeholder="Etape..." name="step1">
           </div>
 
           <input type="button" value="+" id="add_step">
@@ -121,7 +122,7 @@
 
 
         <div class="submit">
-          <input type="button" value="Ajouter">
+          <input type="submit" value="Ajouter" name="envoyer">
         </div>
       </div>
 
@@ -145,19 +146,27 @@
   btn_add_step.addEventListener("click", add_step);
   btn_add_ingr.addEventListener("click", add_ingr);
 
-
+  let cpt_step = 1;
+  let cpt_ingr = 1;
+  let cpt_tool = 1;
   function add_tool() {
     var input = document.createElement("input")
     input.setAttribute('class', 'item');
     input.setAttribute('type', 'text');
+    // eval("input.setAttribute('name', 'tool" + cpt_tool + "');");
     input.setAttribute('placeholder', "Mixeur...");
     div_tools.append(input);
   }
 
   function add_step() {
+    cpt_step++;
     var input = document.createElement("input")
     input.setAttribute('class', 'item');
     input.setAttribute('type', 'text');
+
+    input.setAttribute('type', 'text');
+
+    eval("input.setAttribute('name', 'step" + cpt_step + "');");
     input.setAttribute('placeholder', "Etape...");
     div_steps.append(input);
   }
@@ -171,8 +180,10 @@
 
     input_ing.setAttribute('type', 'text');
     input_ing.setAttribute('placeholder', "Sucre...");
+    eval("input_ing.setAttribute('name', 'ingr" + cpt_ingr + "');");
 
     input_quen.setAttribute('type', 'text');
+    eval("input_quen.setAttribute('name', 'quen" + cpt_ingr + "');");
     input_quen.setAttribute('placeholder', "32g...");
     input_quen.setAttribute('class', 'quentity');
 

@@ -9,8 +9,7 @@ if(session_status() == 1) {
 
 $action = "home";
 
-if (isset($_GET["action"]) && in_array($_GET["action"], get_class_methods("ClientController")))
-    $action = $_GET["action"];
-
+if (isset($_REQUEST["action"]) && in_array($_REQUEST["action"], get_class_methods("ClientController")))
+    $action = $_REQUEST["action"];
 ClientController::$action();
 ?>

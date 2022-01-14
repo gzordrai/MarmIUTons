@@ -6,10 +6,12 @@
 */
 require_once("./conf/Connexion.php");
 require_once("./models/Client.php");
+require_once("./controllers/RecipeController.php");
 
 class ClientController {
     public static function home() {
-        return require("./views/home.php");
+        RecipeController::readAll();
+        // return require("./views/home.php");
     }
 
     public static function createClient() {
@@ -62,7 +64,11 @@ class ClientController {
         
     }
 
-    public static function profile() {
+    public static function create_recipe() {
+        RecipeController::create_recipe();
+    }
+  
+  public static function profile() {
         return require("./views/profile.php");
     }
 }

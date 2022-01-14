@@ -11,7 +11,7 @@
       <div id="p1" class="paper">
         <div class="front couverture">
           <div id="f1" class="front-content pp">
-            <h1>Livre de recettes</h1>
+            <h1>Livre de recette</h1>
           </div>
         </div>
       </div>
@@ -24,20 +24,23 @@
 </div>
 
 <script>
-  let max_page = 3;
-  let cpt = 1;
+  
+  let pack = <?php echo json_encode($pack_recettes); ?>;
 
+  let max_page = pack.length;
+  let cpt = 1;
+  let recette_actu = 0;
   const bookk = document.getElementById('book');
   const p1 = document.getElementById('p1');
-
-  var page_temp;
+  p1.style.zIndex = max_page+1;
 
   // on a deja p1 de créé, donc on remplie juste le bac de p1
 
   init();
 
   function init() {
-    console.log('entré dans init');
+    console.log(max_page);
+    
     let page;
     new_left_page(p1);
 
@@ -66,7 +69,6 @@
   }
 
   function new_left_page(page) {
-    console.log('left_page haha');
     let b = document.createElement("div");
     b.setAttribute('class', 'back');
 
@@ -76,11 +78,12 @@
 
     let h = document.createElement("h1");
     h.setAttribute('class', 'title_rec');
+    h.textContent = pack[cpt - 1]['name'];
     // AJOUTER LE TITRE
 
     let img = document.createElement("img");
     img.setAttribute('class', 'item');
-    img.setAttribute('src', '../images/logo/cookie.jpg');
+    img.setAttribute('src', './images/logo/' + pack[recette_actu]['image']);
     // AJOUTER L'IMAGE
 
     let r = document.createElement("div");
@@ -96,7 +99,12 @@
 
     let col1 = document.createElement("ul");
     col1.setAttribute('class', 'col');
-
+    let l;
+      for(let i = 0 ; i < pack[recette_actu]['ingredients'].length ; i++) {
+          l = document.createElement("li");
+          l.textContent = pack[recette_actu]['ingredients'][i]['lib_ingr'] + " " + pack[recette_actu]['ingredients'][i]['quentity'];
+          col1.append(l);
+      }
     // AJOUTER LES INGREDIENTS
 
     let t = document.createElement("div");
@@ -109,7 +117,12 @@
 
     let col2 = document.createElement("ul");
     col2.setAttribute('class', 'col');
-    // AJOUTER LES OUTILS
+    let l1;
+      for(let i = 0 ; i < pack[recette_actu]['ustensils'].length ; i++) {
+          l1 = document.createElement("li");
+          l1.textContent = pack[recette_actu]['ustensils'][i]['lib_tool'];
+          col2.append(l1);
+      }
 
 
     page.append(b);
@@ -128,43 +141,46 @@
   function new_right_page() {
     cpt++;
     let p = document.createElement("div");
-    p.setAttribute('id', 'p' + (cpt));
+    p.setAttribute('id', 'p' + cpt);
+    eval('p.style.zIndex = ' + ((max_page+2)-cpt) + ';');
     p.setAttribute('class', 'paper');
 
     let f = document.createElement("div");
     f.setAttribute('class', 'front');
 
     let f_c = document.createElement("div");
-    f_c.setAttribute('id', 'f' + (cpt));
+    f_c.setAttribute('id', 'f' + cpt);
     f_c.setAttribute('class', 'front-content');
 
     let lib_title = document.createElement("p");
     lib_title.setAttribute('class', 'step_title');
     lib_title.textContent = "Étapes :";
 
-    let step_rec = document.createElement("div");
-    step_rec.setAttribute('class', 'step_rec');
+    let u = document.createElement("ul");
+    u.setAttribute('class', 'col');
     // AJOUTER LES ETAPES
+    let l2;
+
+    for(let i = 0 ; i < pack[recette_actu]['etapes'].length ; i++) {
+          l2 = document.createElement("li");
+          l2.textContent = pack[recette_actu]['etapes'][i]['txt_step'];
+          u.append(l2);
+      }
+
 
     bookk.append(p);
     p.append(f);
     f.append(f_c);
     f_c.append(lib_title);
-    f_c.append(step_rec);
+    f_c.append(u);
+    recette_actu++;
     return p;
   }
-
-
 
   // References to DOM Elements
   const prevBtn = document.querySelector("#prev-btn");
   const nextBtn = document.querySelector("#next-btn");
   const book = document.querySelector("#book");
-
-  const paper1 = document.querySelector("#p1");
-  const paper2 = document.querySelector("#p2");
-  const paper3 = document.querySelector("#p3");
-  const paper4 = document.querySelector("#p4");
 
   // Event Listener
   prevBtn.addEventListener("click", goPrevPage);
@@ -172,7 +188,7 @@
 
   // Business Logic
   let currentLocation = 1;
-  let numOfPapers = 4;
+  let numOfPapers = max_page +1;
   let maxLocation = numOfPapers + 1;
 
   function openBook() {
@@ -192,60 +208,38 @@
     nextBtn.style.transform = "translateX(0px)";
   }
 
+
   function goNextPage() {
     if (currentLocation < maxLocation) {
-      switch (currentLocation) {
-        case 1:
-          openBook();
-          paper1.classList.add("flipped");
-          paper1.style.zIndex = 1;
-          break;
-        case 2:
-          paper2.classList.add("flipped");
-          paper2.style.zIndex = 2;
-          break;
-        case 3:
-          paper3.classList.add("flipped");
-          paper3.style.zIndex = 3;
-          break;
-        case 4:
-          paper4.classList.add("flipped");
-          paper4.style.zIndex = 4;
-          closeBook(false);
-          break;
-        default:
-          throw new Error("unkown state");
+      if(currentLocation==1) {
+        openBook();
+      }
+      eval('document.querySelector("#p' + currentLocation + '").classList.add("flipped");');
+      eval('document.querySelector("#p' + currentLocation  + '").style.zIndex = ' + currentLocation + ';');
+
+      if(currentLocation==maxLocation-1) {
+        closeBook(false);
       }
       currentLocation++;
     }
+    
   }
+
 
   function goPrevPage() {
     if (currentLocation > 1) {
-      switch (currentLocation) {
-        case 2:
-          closeBook(true);
-          paper1.classList.remove("flipped");
-          paper1.style.zIndex = 4;
-          break;
-        case 3:
-          paper2.classList.remove("flipped");
-          paper2.style.zIndex = 3;
-          break;
-        case 4:
-          paper3.classList.remove("flipped");
-          paper3.style.zIndex = 2;
-          break;
-        case 5:
-          openBook();
-          paper4.classList.remove("flipped");
-          paper4.style.zIndex = 1;
-          break;
-        default:
-          throw new Error("unkown state");
+      if(currentLocation == 2) {
+        closeBook(true);
       }
 
+      eval('document.querySelector("#p' + (currentLocation-1) + '").classList.remove("flipped");');
+      eval('document.querySelector("#p' + (currentLocation-1) + '").style.zIndex = ' + (numOfPapers-(currentLocation-2)) + ';');
+
+      if(currentLocation == maxLocation) {
+        openBook();
+      }
       currentLocation--;
     }
   }
+
 </script>

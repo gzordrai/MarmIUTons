@@ -3,10 +3,24 @@
     height: 800px;
     width: 1050px;
     justify-content: space-between;
+    font-family: 'Raleway', sans-serif;
+}
+
+#add_tool, #add_ingr, #add_step {
+    /* background-color: #164781; */
+    background-color: #e2cab5;
+    color: white;
+    border: none;
+    transition: 0.2s ease-in-out;
+}
+
+#add_tool:hover, #add_ingr:hover, #add_step:hover {
+    background-color: #164781;
+    transition: 0.2s ease-in-out;
 }
 
 .add_rec {
-    background-image: url(/images/logo/page_ajout.png);
+    background-image: url(../images/logo/page_ajout.png);
     display: flex;
     background-repeat: no-repeat;
     width: 1050px;
@@ -38,6 +52,12 @@
     flex-direction: column;
 }
 
+.tools , .ingrs, .steps{
+    display: flex;
+    flex-direction: column;
+}
+
+
 .item {
     margin-bottom: 7px;
 }
@@ -49,7 +69,8 @@
 .title input{
     width: 390px;
     font-size: 3em;
-    font-family: title;
+    /* font-family: title; */
+    font-family: 'Indie Flower', cursive;
     margin-top: 20px;
     border: none;
     outline: none;
@@ -94,7 +115,7 @@
     background:#333;
     color:#fff;
     font-size:15px;
-    font-family:"Open Sans",sans-serif;
+    font-family: 'Raleway', sans-serif;
     text-transform:Uppercase;
     font-weight:600;
     border-radius:10px;
@@ -136,7 +157,7 @@
  /* The container must be positioned relative: */
 .custom-select {
     position: relative;
-    font-family: Arial;
+    font-family: 'Raleway', sans-serif;
 }
 
 .custom-select select {
