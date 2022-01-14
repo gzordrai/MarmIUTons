@@ -10,7 +10,6 @@ class Recipe {
 	public String $season;
 	public String $meal;
 
-
 	public static function getAllRecettes() {
 		$requete = "SELECT * FROM recipe";
 		$resultat = Connexion::pdo()->query($requete);
@@ -66,6 +65,23 @@ class Recipe {
 		$resultat = Connexion::pdo()->query($requete);
 		$valeur = $resultat->fetchAll();
 		return $valeur[0];
+	}
+
+	/**
+	 * @param string $name The name of the recipe
+	 * @throws PDOException If there is an error in the execution of the sql query
+	 * @return Recipe Return the recipe as an object
+	 */
+	public static function getByName($name) {
+		$request = "SELECT * FROM recipe WHERE name = '$name'";
+
+		try {
+			$results = Connexion::pdo()->query($request);
+			$results->setFetchMode(PDO::FETCH_CLASS,'Recipe');
+			return $results->fetchAll()[0];
+		} catch(PDOException $err) {
+            echo "Error: " . $err->getMessage() . "<br>";
+        }
 	}
 }
 ?>
