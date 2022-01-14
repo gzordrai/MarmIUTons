@@ -77,8 +77,25 @@ class Recipe {
 
 		try {
 			$results = Connexion::pdo()->query($request);
-			$results->setFetchMode(PDO::FETCH_CLASS,'Recipe');
-			return $results->fetchAll()[0];
+			$results->setFetchMode(PDO::FETCH_CLASS, 'Recipe');
+			return $results->fetchAll();
+		} catch(PDOException $err) {
+            echo "Error: " . $err->getMessage() . "<br>";
+        }
+	}
+
+	/**
+	 * @param string $season The name of the recipe
+	 * @throws PDOException If there is an error in the execution of the sql query
+	 * @return Recipe Return the recipe as an object
+	 */
+	public static function getBySeason($season) {
+		$request = "SELECT * FROM recipe WHERE id_season = '$season'";
+
+		try {
+			$results = Connexion::pdo()->query($request);
+			$results->setFetchMode(PDO::FETCH_CLASS, 'Recipe');
+			return $results->fetchAll();
 		} catch(PDOException $err) {
             echo "Error: " . $err->getMessage() . "<br>";
         }
