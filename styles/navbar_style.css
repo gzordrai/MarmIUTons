@@ -18,7 +18,8 @@ li {
 li a {
     display: block;
     color: white;
-    font-family: txt;
+    /* font-family: txt; */
+    font-family: 'Raleway', sans-serif;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;

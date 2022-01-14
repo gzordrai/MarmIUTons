@@ -10,14 +10,22 @@
         <link rel="stylesheet" href="./styles/research_style.css">
         <link rel="stylesheet" href="./styles/book_style.css">
         <link rel="stylesheet" href="./styles/add_recipe_style.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+
+        
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
         <script type="application/javascript" src="./scripts/home.js"></script>
         <script type="application/javascript" src="https://kit.fontawesome.com/95f48b9c6d.js" crossorigin="anonymous"></script>
 
-        <title>Recipie</title>
+        <title>Wortel</title>
     </head>
     <body>
         <ul>
-            <li><a class="active" href="#home">Livre de recettes</a></li>
+            <li><a class="active" href="index.php?action=book_2">Livre de recettes</a></li>
             <li><a href="#">Recherche</a></li>
             <?php
                 if(!isset($_SESSION["email"])) {
@@ -35,7 +43,7 @@
         </ul>
         
         <section id="paralax">
-            <h2 id="text">Recipie</h2>
+            <h2 id="text">Wortel</h2>
             <img src="./images/paralax/background.png" id="background">
             <img src="./images/paralax/etoile.png" id="etoile">
             <img src="./images/paralax/lune.png" id="lune">
@@ -49,6 +57,10 @@
         </section>
 
         <!-- content  -->
-        <div class="main"></div>
+        <div class="main">
+            <?php
+                include "./includes/add_recipe.php";
+            ?>
+        </div>
     </body>
 </html>

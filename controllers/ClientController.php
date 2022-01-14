@@ -5,11 +5,13 @@
  *    - fonction de recherche
 */
 require_once("./conf/Connexion.php");
+require_once("./controllers/RecipeController.php");
 Connexion::connect();
 
 class ClientController {
     public static function home() {
-        return require("./views/home.php");
+        RecipeController::readAll();
+        // return require("./views/home.php");
     }
 
     public static function createClient() {
@@ -47,4 +49,9 @@ class ClientController {
     public static function updated() {
         
     }
+
+    public static function create_recipe() {
+        RecipeController::create_recipe();
+    }
+
 }

@@ -124,12 +124,10 @@ i {
     color: gray;
 }
 
-/* Paper stack order */
-#p1 {
-    z-index: 4;
-}
 
-#p2 {
+
+/* Paper stack order */
+/* #p2 {
     z-index: 3;
 }
 
@@ -137,6 +135,6 @@ i {
     z-index: 2;
 }
 
-#p3 {
+#p4 {
     z-index: 1;
-}
+} */

@@ -20,20 +20,12 @@
     --padding-bloc: 10px;
     }
 
-@font-face {
-    font-family: txt;
-    src: url(../font/Espera-Regular.ttf);
-}
-
-@font-face {
-    font-family: title;
-    src: url(../font/Peas_&_Carrots.ttf);
-}
 
 body {
     background-color:  var(--brown);
     margin: 0;
-    font-family: txt;
+    /* font-family: txt; */
+    font-family: 'Raleway', sans-serif;
 }
 
 .main, .content_profile {
@@ -44,6 +36,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Raleway', sans-serif;
 }
 
 .content_profile {
