@@ -40,7 +40,7 @@ class RecipeController {
             $dest = "./images/logo/".$_FILES['image']['name'];
             move_uploaded_file($_FILES['image']['tmp_name'], $dest);
 
-            Recipe::addRecipe($rec_name, $meal_type, $season, $cost, $num_people, $_FILES['image']['name']);
+            Recipe::addRecipe($rec_name, $meal_type, $season, $cost, $num_people, $_FILES['image']['name'], $id_client);
             $id_curr = Recipe::get_max_id_recipe();
             $cpt_step = 1;
 
