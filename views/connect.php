@@ -30,7 +30,7 @@
             </div>
 
             <div class="help_div">
-                <a href="../view/register.php">S'inscrire</a>
+                <a href="index.php?action=createClient">S'inscrire</a>
                 <a href="#">Mots de passe oublié</a>
             </div>
 

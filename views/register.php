@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="help_div">
-                        <a href="../view/connect.php">Se connecter</a>
+                        <a href="index.php?action=connectClient">Se connecter</a>
                     </div>
 
                     <div class="submit_div">
