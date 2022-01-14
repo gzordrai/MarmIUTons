@@ -100,5 +100,22 @@ class Recipe {
             echo "Error: " . $err->getMessage() . "<br>";
         }
 	}
+
+	/**
+	 * @param string $meal The meal type of the recipe
+	 * @throws PDOException If there is an error in the execution of the sql query
+	 * @return Recipe Return the recipe as an object
+	 */
+	public static function getByMeal($meal) {
+		$request = "SELECT * FROM recipe WHERE id_meal = '$meal'";
+
+		try {
+			$results = Connexion::pdo()->query($request);
+			$results->setFetchMode(PDO::FETCH_CLASS, 'Recipe');
+			return $results->fetchAll();
+		} catch(PDOException $err) {
+            echo "Error: " . $err->getMessage() . "<br>";
+        }
+	}
 }
 ?>
