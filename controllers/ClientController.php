@@ -23,7 +23,7 @@ class ClientController {
         $pseudo = $_GET["pseudo"];
         $pwd = password_hash($_GET["pwd"], PASSWORD_BCRYPT, [ 'cost' => 12,]);
 
-        if(Client::isRegister($email, $pwd)) return;
+        if(Client::isRegister($email, $pwd))
             return header("Location: index.php?action=connectClient");
 
         Client::add($email, $pseudo, $pwd);
