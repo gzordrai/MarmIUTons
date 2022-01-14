@@ -85,7 +85,7 @@ class Recipe {
 	}
 
 	/**
-	 * @param string $season The name of the recipe
+	 * @param string $season The season of the recipe
 	 * @throws PDOException If there is an error in the execution of the sql query
 	 * @return Recipe Return the recipe as an object
 	 */
