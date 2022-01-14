@@ -62,7 +62,7 @@ class ClientController {
         RecipeController::create_recipe();
     }
   
-  public static function profile() {
+    public static function profile() {
         return require("./views/profile.php");
     }
 }
