@@ -42,7 +42,7 @@
 
           <div class="quentity">
             <p>Pour combien de personnes ?</p>
-            <input type="number" id="num" name="num_people" min="1" max="20">
+            <input type="number" id="num" name="num_people" min="1" max="20" class="input">
           </div>
         </div>
 
@@ -94,7 +94,7 @@
           <div class="tools" id="tools">
             <div id="champs_tool">
               <p>Le matériel nécessaire :</p>
-              <input class="item" type="text" placeholder="Mixeur..." name="tool1">
+              <input class="item input" type="text" placeholder="Mixeur..." name="tool1">
             </div>
             <input type="button" value="+" id="add_tool">
           </div>
@@ -103,8 +103,8 @@
             <div id="champs_ingrs">
               <p>Les ingrédients et leur quantité :</p>
               <div class="item">
-                <input type="text" placeholder="Sucre..." name="ingr1">
-                <input class="quentity" type="text" placeholder="32g..." name="quen1">
+                <input type="text" placeholder="Sucre..." name="ingr1" class="input">
+                <input class="quentity input" type="text" placeholder="32g..." name="quen1">
               </div>
 
             </div>
@@ -114,7 +114,7 @@
         </div>
         <div class="steps item" id="steps">
           <div id="champs_steps">
-            <input class="item step" type="text" placeholder="Etape..." name="step1">
+            <input class="item step input" type="text" placeholder="Etape..." name="step1">
           </div>
 
           <input type="button" value="+" id="add_step">
@@ -122,7 +122,7 @@
 
 
         <div class="submit">
-          <input type="submit" value="Ajouter" name="envoyer">
+          <input type="submit" value="Ajouter" name="envoyer" class="ajouter_btn">
         </div>
       </div>
 
@@ -153,7 +153,8 @@
     var input = document.createElement("input")
     input.setAttribute('class', 'item');
     input.setAttribute('type', 'text');
-    // eval("input.setAttribute('name', 'tool" + cpt_tool + "');");
+    input.setAttribute('class', 'input');
+
     input.setAttribute('placeholder', "Mixeur...");
     div_tools.append(input);
   }
@@ -164,7 +165,7 @@
     input.setAttribute('class', 'item');
     input.setAttribute('type', 'text');
 
-    input.setAttribute('type', 'text');
+    input.setAttribute('class', 'input');
 
     eval("input.setAttribute('name', 'step" + cpt_step + "');");
     input.setAttribute('placeholder', "Etape...");
@@ -179,10 +180,14 @@
     div.setAttribute('class', 'item');
 
     input_ing.setAttribute('type', 'text');
+    input_ing.setAttribute('class', 'input');
+
     input_ing.setAttribute('placeholder', "Sucre...");
     eval("input_ing.setAttribute('name', 'ingr" + cpt_ingr + "');");
 
     input_quen.setAttribute('type', 'text');
+    input_quen.setAttribute('class', 'input');
+
     eval("input_quen.setAttribute('name', 'quen" + cpt_ingr + "');");
     input_quen.setAttribute('placeholder', "32g...");
     input_quen.setAttribute('class', 'quentity');

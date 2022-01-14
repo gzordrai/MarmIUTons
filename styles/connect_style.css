@@ -13,6 +13,7 @@
     width: 30%;
     position: absolute;
     background-image: url(../images/logo/bandeau.png);
+    background-repeat: no-repeat;
 }
 
 .left_bloc img {

@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: brown;
+    background-color: #f9eadd;
 }
 
 .search {
@@ -17,4 +17,33 @@
 
 .btn_search {
     width: 100%;
+    background-color: #164781;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
 }
+
+
+
+.input_title {
+    font-family: 'Indie Flower', cursive;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    font-size: 2em;
+}
+
+.title_search {
+    font-family: 'Indie Flower', cursive;
+}
+
+#type-select {
+    background-color: #164781;
+    color: white;
+    padding: 10px;
+    border-radius: 7px;
+    border: none;
+}
+
+
