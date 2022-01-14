@@ -19,7 +19,7 @@
         </div>
         <div class="content">
             <form method="GET" action="index.php">
-            <input type="hidden" name="action" value="connectedClient">
+            <input type="hidden" name="action" value="createdClient">
 
             <div class="mail_div">
                 <input type="email" name="email" placeholder="Adresse e-mail..." required>

@@ -35,43 +35,51 @@ class RecipeController {
     public static function create_recipe() {
         
         extract($_POST);
-        $dest = "./images/logo/".$_FILES['image']['name'];
-        move_uploaded_file($_FILES['image']['tmp_name'], $dest);
+        if(isset($_SESSION['email'])) {
+                $id_client = $_SESSION['email'];
+            $dest = "./images/logo/".$_FILES['image']['name'];
+            move_uploaded_file($_FILES['image']['tmp_name'], $dest);
 
-		Recipe::addRecipe($rec_name, $meal_type, $season, $cost, $num_people, $_FILES['image']['name']);
-        $id_curr = Recipe::get_max_id_recipe();
-        $cpt_step = 1;
+            Recipe::addRecipe($rec_name, $meal_type, $season, $cost, $num_people, $_FILES['image']['name']);
+            $id_curr = Recipe::get_max_id_recipe();
+            $cpt_step = 1;
 
-        while(1) {
-            if(eval("return isset(\$step" . $cpt_step . ");")) {
-                Step::addStep(eval("return \$step" . $cpt_step . ";"), $cpt_step, $id_curr['MAX(id_recipe)']);
-                $cpt_step++;
-            } else {
-                break;
+            while(1) {
+                if(eval("return isset(\$step" . $cpt_step . ");")) {
+                    Step::addStep(eval("return \$step" . $cpt_step . ";"), $cpt_step, $id_curr['MAX(id_recipe)']);
+                    $cpt_step++;
+                } else {
+                    break;
+                }
             }
-        }
 
-        $cpt_ingredient = 1;
-        while(1) {
-            if(eval("return isset(\$ingr" . $cpt_ingredient . ");")) {
-                Ingredient::addIngr(eval("return \$ingr" . $cpt_ingredient . ";"), eval("return \$quen" . $cpt_ingredient . ";"), $id_curr['MAX(id_recipe)']);
-                $cpt_ingredient++;
-            } else {
-                break;
+            $cpt_ingredient = 1;
+            while(1) {
+                if(eval("return isset(\$ingr" . $cpt_ingredient . ");")) {
+                    Ingredient::addIngr(eval("return \$ingr" . $cpt_ingredient . ";"), eval("return \$quen" . $cpt_ingredient . ";"), $id_curr['MAX(id_recipe)']);
+                    $cpt_ingredient++;
+                } else {
+                    break;
+                }
             }
-        }
 
-        $cpt_tool = 1;
-        while(1) {
-            if(eval("return isset(\$tool" . $cpt_tool . ");")) {
-                Tool::addTool(eval("return \$tool" . $cpt_tool . ";"), $cpt_tool, $id_curr['MAX(id_recipe)']);
-                $cpt_tool++;
-            } else {
-                break;
+            $cpt_tool = 1;
+            while(1) {
+                if(eval("return isset(\$tool" . $cpt_tool . ");")) {
+                    Tool::addTool(eval("return \$tool" . $cpt_tool . ";"), $id_curr['MAX(id_recipe)']);
+                    $cpt_tool++;
+                } else {
+                    break;
+                }
             }
+            
+            // TODO
+            require("index.php?action=home");
+        } else {
+            // TODO
+            require("../index.php?action=connectClient");
         }
-
-        require("./views/home.php");
+        
     }
 
     

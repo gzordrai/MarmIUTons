@@ -59,7 +59,7 @@
         <!-- content  -->
         <div class="main">
             <?php
-                include "./includes/add_recipe.php";
+                include "./includes/book_2.php";
             ?>
         </div>
     </body>

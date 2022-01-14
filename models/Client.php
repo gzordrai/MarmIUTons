@@ -3,48 +3,32 @@ require_once("./conf/Connexion.php");
 Connexion::connect();
 
 class Client {
-    /**
-     * Check if the client is already register
-     * @param string $email Client email
-     * @param string $pwd Client password
-     * @return boolean Return if the client is register
-     */
-    public static function isRegister($email, $pwd) {
-        $request = "SELECT password FROM client WHERE email = :email";
-        $preparedRequest = Connexion::pdo()->prepare($request);
-        $values = array(
-            "email" => $email
-        );
+    private $id;
+    private $email;
+    private $pseudo;
+    private $pwd;
+    private $inscriptionDate;
 
-        try {
-            $preparedRequest->execute($values);
-            $results = $preparedRequest->fetch();
-
-            if(isset($results[0])) {
-                if(password_verify($pwd, $results[0]))
-                    return true;
-            }
-            
-            return false;
-        } catch(PDOException $err) {
-            echo "Error: " . $err->getMessage() . "<br>";
-        }
+    public function __construct($email, $pseudo, $pwd) {
+        $this->email = $email;
+        $this->pseudo =$pseudo;
+        $this->pwd = $pwd;
     }
 
     /**
-     * Add a client to the database
-     * @param string $email Client email
-     * @param string $pseudo Client pseudo
-     * @param string $pwd Client password
+     * add a client to the database
+     * @param string $email
+     * @param string $pseudo
+     * @param string $pwd
      * @return void
      */
     public static function add($email, $pseudo, $pwd) {
-        $request = "INSERT INTO client(email, pseudo, password) VALUES(:email, :pseudo, :pwd);";
+        $request = "INSERT INTO client VALUES(:email, :pseudo, :pwd);";
         $preparedRequest = Connexion::pdo()->prepare($request);
         $values = array(
             "email" => $email,
             "pseudo" => $pseudo,
-            "pwd" => $pwd,
+            "pwd" => $pwd
         );
 
         try {
@@ -54,24 +38,16 @@ class Client {
         }
     }
 
-    /**
-     * Get the client pseudo by client email
-     * @param string $email Client email
-     * @return string Return the client pseudo
-     */
-    public static function getPseudoByEmail($email) {
-        $request = "SELECT pseudo FROM client WHERE email = :email";
-        $preparedRequest = Connexion::pdo()->prepare($request);
-        $values = array(
-            "email" => $email
-        );
+    public function getEmail() {
+        return $this->email;
+    }
 
-        try {
-            $preparedRequest->execute($values);
-            return $preparedRequest->fetch()["pseudo"];
-        } catch(PDOException $err) {
-            echo "Error: " . $err->getMessage() . "<br>";
-        }
+    public function getPseudo() {
+        return $this->pseudo;
+    }
+
+    public function getInscriptionDate() {
+        return $this->inscriptionDate;
     }
 }
 ?>

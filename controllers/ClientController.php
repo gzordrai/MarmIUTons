@@ -5,8 +5,8 @@
  *    - fonction de recherche
 */
 require_once("./conf/Connexion.php");
-require_once("./models/Client.php");
 require_once("./controllers/RecipeController.php");
+Connexion::connect();
 
 class ClientController {
     public static function home() {
@@ -21,16 +21,11 @@ class ClientController {
     public static function createdClient() {
         $email = $_GET["email"];
         $pseudo = $_GET["pseudo"];
-        $pwd = password_hash($_GET["pwd"], PASSWORD_BCRYPT, [ 'cost' => 12,]);
+        $pwd = $_GET["pwd"];
 
-        if(Client::isRegister($email, $pwd)) return;
-            return header("Location: index.php?action=connectClient");
-
-        Client::add($email, $pseudo, $pwd);
+        //$client = new Client($email, $pseudo, $pwd);
 
         $_SESSION["email"] = $email;
-        $_SESSION["pseudo"] = $pseudo;
-
         return header("Location: index.php");
     }
 
@@ -39,16 +34,7 @@ class ClientController {
     }
 
     public static function connectedClient() {
-        $email = $_GET["email"];
-        $pwd = $_GET["pwd"];
 
-        if(!Client::isRegister($email, $pwd))
-            return header("Location: index.php?action=connectClient");
-
-        $_SESSION["email"] = $email;
-        $_SESSION["pseudo"] = Client::getPseudoByEmail($email);
-
-        return header("Location: index.php");
     }
 
     public static function disconnection() {
@@ -67,8 +53,5 @@ class ClientController {
     public static function create_recipe() {
         RecipeController::create_recipe();
     }
-  
-  public static function profile() {
-        return require("./views/profile.php");
-    }
+
 }

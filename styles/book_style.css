@@ -7,10 +7,11 @@
     height: 730px;
     background-image: url(../images/logo/page_fond_display.png);
     background-size: contain;
+    font-family: 'Raleway', sans-serif;
 }
 
 .couverture {
-    background-color: #f9eadd;
+    background-color: #f9eadd !important;
 }
 
 .step_rec {
@@ -25,8 +26,8 @@
     flex-direction: column;
 }
 
-.title_rec {
-    font-family: title !important;
+.title_rec{
+    font-family: 'Indie Flower', cursive;
     font-size: 5em;
 }
 
@@ -68,6 +69,20 @@
 }
 
 .front {
+    /* background-color: yellowgreen; */
+    background-image: url(../images/logo/page_avc_carrot.png);
+}
+
+.book_anim .front-content .col {
+    margin: 20px;
+}
+
+.step_title {
+    margin-top: 90px;
+    font-family: 'Indie Flower', cursive;
+}
+
+.front {
     z-index: 1;
     backface-visibility: hidden;
     border-left: 4px solid #e2cab5;
@@ -83,7 +98,6 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
 }
 

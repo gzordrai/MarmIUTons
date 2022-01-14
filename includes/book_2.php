@@ -11,7 +11,57 @@
       <div id="p1" class="paper">
         <div class="front couverture">
           <div id="f1" class="front-content pp">
-            <h1>Livre de recette</h1>
+            <h1></h1>
+            <div class="research">
+              <h1 class="title_search">Rechercher une recette</h1>
+              <form action="" method="post">
+                <div class="title_s">
+                  <input type="text" class="input_title input" placeholder="Nom de la recette...">
+                </div>
+
+
+                <div class="type search">
+                  <select name="meal_type" id="type-select" required>
+                    <option value="">type de plat...</option>
+                    <option value="Cocktail">Cocktail</option>
+                    <option value="Apéritif">Apéritif</option>
+                    <option value="Entrée">Entrée</option>
+                    <option value="Plat">Plat</option>
+                    <option value="Dessert">Dessert</option>
+                    <option value="Petit-dejeuné">Petit-dejeuné</option>
+                  </select>
+                </div>
+
+
+                <div class="season search">
+                  <div class="row">
+                    <div>
+                      <input type="radio" id="huey" name="season" value="huey" checked>
+                      <label for="huey">Printemps</label>
+                    </div>
+                    <div>
+                      <input type="radio" id="dewey" name="season" value="dewey">
+                      <label for="dewey">Eté</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div>
+                      <input type="radio" id="dewey" name="season" value="dewey">
+                      <label for="dewey">Automne</label>
+                    </div>
+                    <div>
+                      <input type="radio" id="dewey" name="season" value="dewey">
+                      <label for="dewey">Hiver</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="btn">
+                  <input class="btn_search" type="button" value="Rechercher">
+                </div>
+
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -26,7 +76,6 @@
 <script>
   
   let pack = <?php echo json_encode($pack_recettes); ?>;
-
   let max_page = pack.length;
   let cpt = 1;
   let recette_actu = 0;
@@ -61,7 +110,7 @@
     b_c.setAttribute('class', 'back-content');
 
     let h = document.createElement("h1");
-    h.textContent = "END";
+    h.textContent = "";
 
     page.append(b);
     b.append(b_c);
