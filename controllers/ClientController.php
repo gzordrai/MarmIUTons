@@ -1,17 +1,11 @@
 <?php
-/**
- * TODO:
- *    - page homme version connecté
- *    - fonction de recherche
-*/
 require_once("./conf/Connexion.php");
 require_once("./models/Client.php");
 require_once("./controllers/RecipeController.php");
 
 class ClientController {
     public static function home() {
-        RecipeController::readAll();
-        // return require("./views/home.php");
+        return RecipeController::readAll();
     }
 
     public static function createClient() {
