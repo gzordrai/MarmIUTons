@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./styles/book_style.css">
 
     <script src="https://kit.fontawesome.com/95f48b9c6d.js" crossorigin="anonymous"></script>
-    <title>Mon profile</title>
+    <title>Mon profil</title>
 </head>
 
 <body>
