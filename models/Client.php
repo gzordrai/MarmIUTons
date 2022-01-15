@@ -72,5 +72,22 @@ class Client {
             echo "Error: " . $err->getMessage() . "<br>";
         }
     }
+
+    /**
+     * Get the client recipes list
+     * @param string $email Client email
+     * @return Array<Recipe> Return the client recipes array
+     */
+    public static function getRecipesByEmail($email) {
+        $request = "SELECT * FROM recipe WHERE id_client = '$email'";
+
+        try {
+			$results = Connexion::pdo()->query($request);
+			$results->setFetchMode(PDO::FETCH_CLASS, 'Recipe');
+			return $results->fetchAll();
+		} catch(PDOException $err) {
+            echo "Error: " . $err->getMessage() . "<br>";
+        }
+    }
 }
 ?>
