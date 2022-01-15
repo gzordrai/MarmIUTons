@@ -1,6 +1,7 @@
 <?php
 require_once("./conf/Connexion.php");
 require_once("./models/Client.php");
+require_once("./models/Recipe.php");
 require_once("./controllers/RecipeController.php");
 
 class ClientController {
@@ -60,6 +61,23 @@ class ClientController {
     }
   
     public static function profile() {
+        $recipes = Client::getRecipesByEmail($_SESSION["email"]);
+
+        $k = 0;
+        foreach($recipes as $recipe) {
+            $pack_recettes[$k] = array(
+                "name" => $recipe->name,
+                "image" => $recipe->image,
+                "cost" => $recipe->cost,
+                "quentity" => $recipe->quentity,
+                "season" => $recipe->id_season,
+                "type" => $recipe->id_meal,
+                "ingredients" => Recipe::getAllIngredientsByRecipe($recipe->id_recipe),
+                "ustensils" => Recipe::getAllToolsByRecipe($recipe->id_recipe),
+                "etapes" => Recipe::getAllStepsByRecipe($recipe->id_recipe)
+            );
+        }
+
         return require("./views/profile.php");
     }
 
