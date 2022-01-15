@@ -147,18 +147,20 @@
     let cpt_tool = 1;
 
     function add_tool() {
-        var input = document.createElement("input")
+        cpt_tool++;
+        var input = document.createElement("input");
         input.setAttribute('class', 'item');
         input.setAttribute('type', 'text');
         input.setAttribute('class', 'input');
 
+        eval("input.setAttribute('name', 'tool" + cpt_tool + "');");
         input.setAttribute('placeholder', "Mixeur...");
         div_tools.append(input);
     }
 
     function add_step() {
         cpt_step++;
-        var input = document.createElement("input")
+        var input = document.createElement("input");
         input.setAttribute('class', 'item');
         input.setAttribute('type', 'text');
 
@@ -170,6 +172,7 @@
     }
 
     function add_ingr() {
+        cpt_ingr++;
         var input_ing = document.createElement("input");
         var input_quen = document.createElement("input");
         var div = document.createElement("div");
