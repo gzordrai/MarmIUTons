@@ -30,7 +30,7 @@
 
     <div class="content_profile">
         <?php
-            include "./includes/book_2.php";
+            include "./includes/profileBook.php";
         ?>
     </div>
 </body>
