@@ -72,6 +72,31 @@ class Recipe {
 
 	/**
 	 * @param string $name The name of the recipe
+	 * @param string $meal The meal type of the recipe
+	 * @param string $season The season of the recipe
+	 * @throws PDOException If there is an error in the execution of the sql query
+	 * @return Array Return the recipe as an array
+	 */
+	public static function get($name, $meal, $season) {
+		$request = "SELECT * FROM recipe WHERE name = :name AND id_meal = :meal AND id_season = :season";
+		$preparedRequest = Connexion::pdo()->prepare($request);
+		$preparedRequest->setFetchMode(PDO::FETCH_CLASS, 'Recipe');
+        $values = array(
+            "name" => $name,
+			"meal" => $meal,
+			"season" => $season
+        );
+
+		try {
+			$preparedRequest->execute($values);
+			return $preparedRequest->fetchAll();
+		} catch(PDOException $err) {
+            echo "Error: " . $err->getMessage() . "<br>";
+        }
+	}
+
+	/**
+	 * @param string $name The name of the recipe
 	 * @throws PDOException If there is an error in the execution of the sql query
 	 * @return Recipe Return the recipe as an object
 	 */
@@ -116,6 +141,29 @@ class Recipe {
 			$results = Connexion::pdo()->query($request);
 			$results->setFetchMode(PDO::FETCH_CLASS, 'Recipe');
 			return $results->fetchAll();
+		} catch(PDOException $err) {
+            echo "Error: " . $err->getMessage() . "<br>";
+        }
+	}
+
+	/**
+	 * @param string $meal The meal type of the recipe
+	 * @param string $season The season of the recipe
+	 * @throws PDOException If there is an error in the execution of the sql query
+	 * @return Array Return the recipe as an array
+	 */
+	public static function getByMealAndSeason($meal, $season) {
+		$request = "SELECT * FROM recipe WHERE id_meal = :meal AND id_season = :season";
+		$preparedRequest = Connexion::pdo()->prepare($request);
+		$preparedRequest->setFetchMode(PDO::FETCH_CLASS, 'Recipe');
+        $values = array(
+			"meal" => $meal,
+			"season" => $season
+        );
+
+		try {
+			$preparedRequest->execute($values);
+			return $preparedRequest->fetchAll();
 		} catch(PDOException $err) {
             echo "Error: " . $err->getMessage() . "<br>";
         }
