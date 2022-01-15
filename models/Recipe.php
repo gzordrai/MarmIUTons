@@ -43,8 +43,8 @@ class Recipe {
 		return $tableau;
 	}
 
-	public static function addRecipe($rec_name, $meal_type, $season, $cost, $num_people,$rec_image, $id_client) {
-		$requetePreparee = "INSERT INTO recipe (name, image, cost, quentity, id_season, id_meal) VALUES (:rec_name,:rec_image,:cost,:quentity,:id_season,:id_meal,:id_client);";
+	public static function addRecipe($rec_name, $meal_type, $season, $cost, $num_people, $rec_image, $id_client) {
+		$requetePreparee = "INSERT INTO recipe (name, image, cost, quentity, id_season, id_meal, id_client) VALUES (:rec_name, :rec_image, :cost, :quentity, :id_season, :id_meal, :id_client);";
 		$req_prep = Connexion::pdo()->prepare($requetePreparee);
 		$valeurs = array(
 			"rec_name" => $rec_name,
@@ -55,6 +55,7 @@ class Recipe {
 			"id_meal" => $meal_type,
 			"id_client" => $id_client
 		);
+
 		try {
 			$req_prep->execute($valeurs);
 		} catch (PDOException $e) {
