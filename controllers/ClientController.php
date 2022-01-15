@@ -62,4 +62,8 @@ class ClientController {
     public static function profile() {
         return require("./views/profile.php");
     }
+
+    public static function search() {
+        RecipeController::search();
+    }
 }

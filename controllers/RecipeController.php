@@ -78,5 +78,35 @@ class RecipeController {
             return header("Location: index.php?action=connectClient");
         }   
     }
+
+    /**
+     * 
+     */
+    public static function search() {
+        if(!empty($_POST["name"]))
+            $recipes = Recipe::get($_POST["name"], $_POST["meal_type"], $_POST["season"]);
+        else
+            $recipes = Recipe::getByMealAndSeason($_POST["meal_type"], $_POST["season"]);
+
+        if(empty($recipes))
+            return header("Location: index.php?action=home");
+
+        $k = 0;
+        foreach($recipes as $recipe) {
+            $pack_recettes[$k] = array(
+                "name" => $recipe->name,
+                "image" => $recipe->image,
+                "cost" => $recipe->cost,
+                "quentity" => $recipe->quentity,
+                "season" => $recipe->id_season,
+                "type" => $recipe->id_meal,
+                "ingredients" => Recipe::getAllIngredientsByRecipe($recipe->id_recipe),
+                "ustensils" => Recipe::getAllToolsByRecipe($recipe->id_recipe),
+                "etapes" => Recipe::getAllStepsByRecipe($recipe->id_recipe)
+            );
+        }
+
+        return require("./views/search.php");
+    }
 }
 ?>
