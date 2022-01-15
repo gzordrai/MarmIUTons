@@ -50,12 +50,9 @@ class ClientController {
         return header("Location: index.php");
     }
 
-    public static function update() {
-
-    }
-
-    public static function updated() {
-        
+    public static function addRecipe() {
+        $_POST["include"] = "add_recipe.php";
+        return require("./views/home.php");
     }
 
     public static function create_recipe() {

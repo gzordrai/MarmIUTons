@@ -15,7 +15,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
         <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Raleway:wght@300&display=swap" rel="stylesheet"> 
-
         
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
         <script type="application/javascript" src="./scripts/home.js"></script>
@@ -25,8 +24,7 @@
     </head>
     <body>
         <ul>
-            <li><a class="active" href="index.php?action=book_2">Livre de recettes</a></li>
-            <li><a href="#">Recherche</a></li>
+            <li><a class="active" href="index.php?action=home">Livre de recettes</a></li>
             <?php
                 if(!isset($_SESSION["email"])) {
             ?>
@@ -35,6 +33,7 @@
             <?php
                 } else {
             ?>
+                    <li class='connect'><a href='index.php?action=addRecipe'>Ajouter recette</a></li>
                     <li class='connect'><a href='index.php?action=profile'>Profil</a></li>
                     <li class='connect'><a href='index.php?action=disconnection'>Deconnexion</a></li>
             <?php
@@ -59,7 +58,10 @@
         <!-- content  -->
         <div class="main">
             <?php
-                include "./includes/book_2.php";
+                if(isset($_POST["include"]))
+                    include "./includes/" . $_POST["include"];
+                else
+                    include "./includes/book_2.php";
             ?>
         </div>
     </body>
