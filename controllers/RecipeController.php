@@ -56,36 +56,26 @@ class RecipeController {
             $cpt_tool = 1;
 
             //add steps
-            while(1) {
-                if(eval("return isset(\$step" . $cpt_step . ");")) {
-                    Step::addStep(eval("return \$step" . $cpt_step . ";"), $cpt_step, $id_curr['MAX(id_recipe)']);
-                    $cpt_step++;
-                } else
-                    break;
+            while(eval("return isset(\$step" . $cpt_step . ");")) {
+                Step::addStep(eval("return \$step" . $cpt_step . ";"), $cpt_step, $id_curr['MAX(id_recipe)']);
+                $cpt_step++;
             }
             
             //add ingredients
-            while(1) {
-                if(eval("return isset(\$ingr" . $cpt_ingredient . ");")) {
-                    Ingredient::addIngr(eval("return \$ingr" . $cpt_ingredient . ";"), eval("return \$quen" . $cpt_ingredient . ";"), $id_curr['MAX(id_recipe)']);
-                    $cpt_ingredient++;
-                } else
-                    break;
+            while(eval("return isset(\$ingr" . $cpt_ingredient . ");")) {
+                Ingredient::addIngr(eval("return \$ingr" . $cpt_ingredient . ";"), eval("return \$quen" . $cpt_ingredient . ";"), $id_curr['MAX(id_recipe)']);
+                $cpt_ingredient++;
             }
 
             //add tools
-            while(1) {
-                if(eval("return isset(\$tool" . $cpt_tool . ");")) {
-                    Tool::addTool(eval("return \$tool" . $cpt_tool . ";"), $id_curr['MAX(id_recipe)']);
-                    $cpt_tool++;
-                } else
-                    break;
+            while(eval("return isset(\$tool" . $cpt_tool . ");")) {
+                Tool::addTool(eval("return \$tool" . $cpt_tool . ";"), $id_curr['MAX(id_recipe)']);
+                $cpt_tool++;
             }
             
-            return require("index.php");
+            return header("Location: index.php?action=home");
         } else {
-            // TODO
-            return require("index.php?action=connectClient");
+            return header("Location: index.php?action=connectClient");
         }   
     }
 }
