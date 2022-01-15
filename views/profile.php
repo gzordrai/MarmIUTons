@@ -16,13 +16,12 @@
   <div class="container_profile">
     <div class="informations-bar">
       <ul>
-        <li class="active li">Informations</li>
+        <li class="li"><a href='index.php?action=home'>Accueil</a></li>
         <li class="li">Mes recettes</li>
-        <li class="li">Recettes enregistrées</l>
       </ul>
 
       <div class="profile">
-        <img src="./images/logo/cookie.jpg">
+        <img src="./images/logo/user_icon.png">
         <p class="name">@<?php echo $_SESSION["pseudo"] ?></p>
       </div>
     </div>
