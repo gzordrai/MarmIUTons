@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/book_style.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Raleway:wght@300&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/95f48b9c6d.js" crossorigin="anonymous"></script>
     <title>Mon profil</title>
 </head>
