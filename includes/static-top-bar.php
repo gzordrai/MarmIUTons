@@ -1,3 +1,4 @@
+<?php ?>
 <!-- navbar -->
 <ul>
   <li><a class="active" href="#home">Livre de recettes</a></li>
