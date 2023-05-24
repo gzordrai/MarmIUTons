@@ -1,5 +1,7 @@
-<?php ?>
-<!-- navbar -->
+<?php 
+  echo "<!-- navbar -->";
+?>
+
 <ul>
   <li><a class="active" href="#home">Livre de recettes</a></li>
   <li><a href="#">Recherche</a></li>
