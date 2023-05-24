@@ -1,3 +1,7 @@
+<?php 
+  echo "<!-- Git this is not Hack language but php file... -->";
+?>
+
 <div class="research">
   <h1>Rechercher une recette</h1>
   <form action="" method="post">

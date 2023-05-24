@@ -1,3 +1,7 @@
+<?php 
+  echo "<!-- Git this is not Hack language but php file... -->";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

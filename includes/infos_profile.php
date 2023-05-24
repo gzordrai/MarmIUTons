@@ -1,3 +1,7 @@
+<?php 
+  echo "<!-- Git this is not Hack language but php file... -->";
+?>
+
 <ul class="navBar">
   <li><a href="#home">Livre de recettes</a></li>
   <li><a href="#">Accueil</a></li>

@@ -1,3 +1,7 @@
+<?php 
+  echo "<!-- Git this is not Hack language but php file... -->";
+?>
+
 <div class="book_anim">
   <!-- Previous Button -->
   <button id="prev-btn">
