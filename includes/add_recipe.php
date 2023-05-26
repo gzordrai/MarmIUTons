@@ -1,3 +1,7 @@
+<?php 
+  echo "<!-- Git this is not Hack language but php file... -->";
+?>
+
 <div class="add_rec">
     <form action="index.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="action" value="create_recipe">
